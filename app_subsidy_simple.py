@@ -137,16 +137,16 @@ with left:
 
     st.subheader("4. 자동 계산 결과")
     c1, c2, c3 = st.columns(3)
-    c1.metric("출고가(원)", f"{msrp:,}")
-    c2.metric("공시지원금(원)", f"{subsidy:,}")
-    c3.metric("기본 계산가(원)", f"{base:,}")
+    c1.metric("출고가(원)", f"{msrp:,.0f}")
+    c2.metric("공시지원금(원)", f"{subsidy:,.0f}")
+    c3.metric("기본 계산가(원)", f"{base:,.0f}")
 
     st.subheader("5. 매장 할인 입력")
     store_discount = st.number_input("매장 할인(원)", min_value=0, step=10_000, value=0, help="추가로 깎아주는 금액을 입력하세요")
 
     final_price = max(base - int(store_discount), 0)
     st.subheader("6. 최종가")
-    st.success(f"최종 결제 금액: **{final_price:,}원**")
+    st.success(f"최종 결제 금액: **{final_price:,.0f}원**")
 
 with right:
     with st.expander("🔎 디버그/데이터 확인", expanded=False):
